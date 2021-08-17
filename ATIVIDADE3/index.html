@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Atividade 3</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Eric Hideki">
+    <meta name="description" content="Atividade 3">
+    <link rel="short icon" type="image/png" href="icons8-lua-brilhante-96.png">
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Jarallax -->
+    <link rel="stylesheet" href="jarallax.css">
+
+    <!--  -->
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            width: 100%;
+            background-color: rgb(4,9,30);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body::before{
+            content: "WEB";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16em;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 1px rgb(154, 135, 172);
+            box-sizing: border-box;
+        }
+
+        .header{
+            min-height: 100vh;
+            max-height: 1000px;
+            width: 100%;
+            background-image: linear-gradient(rgba(4,9,30,0.9), rgba(4,9,30,0.7)), url(george-lemon-2zH2tDtmGro-unsplash.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        nav{
+            display: flex;   
+            padding: 2% 6%;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        nav ul li{
+            display: inline-block;
+            list-style: none;
+            padding: 8px 25px 0;
+
+        }
+
+        nav ul li a{
+            flex: 1;
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            text-transform: uppercase;
+            font-weight: lighter;
+            letter-spacing: .15em;
+            position: relative;
+            transition: all 0.2s linear;
+        }
+
+        nav img{
+            height: 50px;
+            padding-left: 15px;
+        }
+
+        nav p{
+            position: absolute;
+            left: 100px;
+            top: 90px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        nav ul li a::after {
+            content: "";
+            width: 0;
+            height: 5px;
+            background: rgb(182, 104, 255);
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            top: -55px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        nav ul li a:hover{
+            color: rgb(182, 104, 255);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .top-content{
+            text-align: center;
+            padding: 300px 0;
+        }
+
+        .top-content h1{
+            font-size: 5.5em;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+        }
+
+        .top-content span{
+            color:rgb(182, 104, 255);
+        }
+
+        .top-content p{
+            color: white;
+            display: block;
+            padding: 1em 0;
+            text-transform: uppercase;
+            font-size: 1em;
+            font-weight: normal;
+            letter-spacing: .15em;
+        }
+
+        .social-links {
+            transform: rotate(-90deg);
+            position: absolute;
+            left: -110px;
+            bottom: 500px;
+        }
+
+        .social-links li {
+            display: inline-block;
+            margin-right: 4em;
+        }
+
+        .social-links a {
+            color: rgb(221, 184, 255);
+            text-decoration: none;
+            font-size: 1em;
+            text-transform: uppercase;
+            font-weight: lighter;
+            letter-spacing: .15em;
+            transition: all .2s linear;
+        }
+
+        .social-links a:hover{
+            color: rgb(255, 255, 255);
+        }
+
+        .introducao{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .introducao h2{
+            margin-left: 200px;
+            font-size: 4em;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .introducao .container{
+            position: relative;
+            width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .introducao .container .imgBx{
+          position: relative;  
+          width: 800px;
+          height: 400px;
+          overflow: hidden;
+          box-shadow: 0 25px 35px rgba(0,0,0,.1);
+        }
+
+        .introducao .container .imgBx img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+
+        .introducao .container .content{
+            position: absolute;
+            right: 0;
+            margin-top: 200px;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: rgb(25, 23, 41);
+            z-index: 1;
+            max-width: 400px;
+            color: white;
+            border-bottom: 5px solid rgb(182, 104, 255);
+            line-height: 1.5em;
+            
+        }
+
+        .evolucao{
+            position: relative;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding-top: 0;
+            box-sizing: border-box;
+        }
+
+        .evolucao h2{
+            text-align: center;
+            font-size: 4em;
+            color: white;
+            margin-bottom: 40px;
+            margin-right: 100px;
+        }
+
+        .container-card{
+            width: 60%;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            margin: auto;
+            padding-top: 3em;
+        }
+
+        .container-card .card{
+            width: 32%;
+            padding: 1%;
+        }
+
+        .container-card .card .face{
+            transition: .5s;
+        }
+
+        .face1{
+          position: relative;  
+          background: rgb(25, 23, 41);
+          color: transparent;
+            -webkit-text-stroke: 1.5px rgb(193, 128, 255);
+          font-size: 3em;
+          z-index: 1;
+          padding: .7em 0 0;
+          font-weight: bold;
+          letter-spacing: .15em;
+        }
+
+        .face2{
+            background: rgb(25, 23, 41);
+            justify-content: center;
+            padding: 30px;
+            box-sizing: border-box;
+            color: white;
+            border-bottom: 5px solid rgb(182, 104, 255);
+        }
+
+        .version{
+            text-align: center;
+        }
+        
+        .quarta{
+            height: 100vh;
+            width: 100%;
+            margin: 0;
+            background: rgb(25, 23, 41);
+            z-index: 1;
+            color: white;
+            position: relative;
+            padding-top: 5em;
+        }
+
+        .quarta h2{
+            text-align: center;
+            font-size: 4em;
+            color: white;
+            margin-left: 200px;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+        }
+
+        .quarta h2 span{
+            color: rgb(182, 104, 255);
+        }
+
+        .quarta-container{
+            display: flex;
+            width: 90%;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0;
+            padding-top: 3em;
+        }
+
+        .quarta-content{
+            display: block;
+            width: 35%;
+            padding: 3em 10% 0 15%;
+
+            line-height: 1.5em;
+            text-align: justify;
+            font-size: 1.2em;
+            margin-right: 0;
+            text-shadow: 3px 5px 5px rgba(0,0,0,.1);
+            
+        }
+
+        .quarta-content div{
+            padding-bottom: 10px;
+        }
+
+        .imgBx2{
+            position: relative;  
+          width: 800px;
+          height: 400px;
+          overflow: hidden;
+          box-shadow: 0 25px 35px rgba(0,0,0,.1);
+        }
+
+        .introducao .container .imgBx2 img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+        }
+
+        .conclusao{
+            height: 75vh;
+            width: 100%;
+            margin: 0;
+            color: white;
+            position: relative;
+            padding-top: 13em;
+        }
+
+        .conclusao h2{
+            text-align: center;
+            font-size: 4em;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            margin-right: 200px;
+        }
+
+        .conclusao-content{
+            text-align: justify;
+            background-color: rgb(25, 23, 41);
+            width: 50%;
+            margin: auto;
+            padding: 2em;
+            margin-top: 5em;
+            border-bottom: 5px solid rgb(182, 104, 255);
+            line-height: 1.5em;
+            font-size: 1.5em;
+        }
+
+        footer{
+            background-color: rgb(25, 23, 41);
+            min-height: 8vh;
+            width: 100%;
+            text-align: center;
+            color: rgb(217, 152, 255);
+            padding-top: 2em;
+            text-transform: uppercase;
+            font-weight: bold;
+            
+        }
+
+        footer p{
+            margin-right: 250px;
+        }
+
+        footer a{
+            text-decoration: none;
+            color: rgb(217, 152, 255);
+            transition: all .2s linear;
+        }
+
+        footer a:hover{
+            text-decoration: underline;
+            color: white;
+        }
+    </style>
+    
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <img src="logo.png" alt="Logo">
+            <!-- <p>HIDEKI</p> -->
+            <ul>
+                <li>
+                    <a href="#">Introdução</a>
+                </li>
+                <li>
+                    <a href="#">Web 4.0</a>
+                </li>
+                <li>
+                    <a href="#">Conclusão</a>
+                </li>
+                <li>
+                    <a href="#">Referencias</a>
+                </li>
+            </ul>   
+        </nav>
+        
+        <section class="top-content">
+            <h1 data-jarallax-element="-200 0">Web<span> 4.0</span></h1>
+            <p data-jarallax-element="-100 0">"A era da <span>inteligência artificial</span>" <br></p>
+            <ul class="social-links">
+                <li><a href="https://github.com/EricHidekiKataokaFerreira" target="_blank">GitHub</a></li>
+                <li><a href="https://www.instagram.com/hideki.eric/" target="_blank">Instagram</a></li>
+                <li><a href="https://twitter.com/KataokaEric" target="_blank">Twitter</a></li>
+            </ul>
+        </section>
+    </section>
+
+    <section class="introducao">
+        <div class="box">
+            <h2 data-jarallax-element="0 -200">INTRODUÇÃO</h2>
+            <div class="container">
+                <div class="imgBx jarallax">
+                    <img src="photo-1492515114975-b062d1a270ae.jpg" alt="Imagem de Teia" class="jarallax-img">
+                </div>
+                <div class="content" data-jarallax-element="-200 0">
+                    <p>Esta atividade abordará conceitos a respeito da Web 4.0, “a era da inteligência artificial”, explicando suas principais características, diferenças em relação as eras anteriores da web, principais vantagens, o que trará de novo ao mercado e como isso irá impactar na sociedade, também serão tratados brevemente conceitos da Web 1.0, Web 2.0 e Web 3.0 para um melhor entendimento do assunto abordado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="evolucao">
+        <H2 data-jarallax-element="0 +100">EVOLUÇÃO</H2>
+        <div class="container-card">
+            <div class="card" data-jarallax-element="-100 0">
+                <div class="face face1">
+                    <div class="content2">
+                        <p class="version">1.0</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content2">
+                        <p>A primeira era remete aos primeiros momentos da Web, se caracteriza pela criação do “WWW” (World Wide Web) e apesar de ser uma grande evolução para a época, só era possível acessar informações, porém não interagir.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-jarallax-element="-200 0">
+                <div class="face face1">
+                    <div class="content2">
+                        <p class="version">2.0</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content2">
+                        <p>Tem seu início por volta de 2004, e apresenta como características principais um aumento considerável de conteúdo em redes sociais de forma que podiam compartilhar e publicar conteúdos, deixando assim de ser uma via de mão única, como era durante a Web 1.0.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-jarallax-element="-300 0">
+                <div class="face face1">
+                    <div class="content2">
+                        <p class="version">3.0</p>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <div class="content2">
+                        <p>A terceira era da Web, conhecida por “Web inteligente”, trouxe diversas novidades e recursos que facilitavam a interação de usuários e um aumento de funcionalidades, outra transformação importante foi a capacidade de uso de máquinas e algoritmos, dessa forma quando se pesquisa mouses para comprar, aparecem em seguida diversas propagandas com o intuito de suprir suas necessidades e interesses levando em consideração o que pode ter mais relevância para o usuário.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="quarta">
+        <h2 data-jarallax-element="0 -200">Era da inteligência<span> artificial</span></h2>
+        <div class="quarta-container">
+            <div class="quarta-content">
+                <div data-jarallax-element="0 +75">
+                    <p>A Web 4.0 é a chamada “Era da inteligência artificial” a qual estamos cada vez mais inseridos. Devido as necessidades do mercado consumidor de lucrar cada vez mais, a tendência é aumentar ainda mais a interação com o indivíduo e de forma mais pessoal. Nesse período a utilização da inteligência artificial será determinante, com a utilização de assistentes virtuais e motores de busca, com o intuito de melhorar a experiencia do usuário promovendo uma maior interação entre máquinas e seres humanos. </p>
+                    <p> Com a chegada da quarta fase Web, serão observados benefícios como: maior facilidade para clientes devido a interações mais pessoais e motores de busca mais eficientes, já que o atendimento vai ter muita importância devido a um grande aumento na concorrência; para o varejo o controle de estoque será bastante otimizado já que poderão ser avisados quando houver necessidade de repor algum produto, diminuindo dessa forma o desperdício de alimento; O comercio virtual terá grande expansão com avanço da tecnologia 3D, facilitando na exibição de itens aos clientes; A internet vai funcionar de forma integrada não necessitando de grandes instalações de hardware.</p> 
+                
+                </div>
+            </div>
+            <div class="imgBx2 jarallax" >
+                <img src="photo-1488590528505-98d2b5aba04b.jpg" alt="Foto de codigos" class="jarallax-img">
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="conclusao">
+        <h2 data-jarallax-element="0 +200">Conclusão</h2>
+        <div class="conclusao-content" data-jarallax-element="-300 0">
+            <p>Pode-se concluir com essa atividade que a Web 4.0 chegará trazendo diversos benefícios, esses que farão grande diferença na maneira a qual os indivíduos interagem com as máquinas, influenciando em diversas áreas de maneira que as empresas terão que correr atras de se atualizar para não ficar atrás da concorrência. Também pode-se notar a maneira que a tecnologia evolui visando atender as necessidades do mercado e a grande influencia que tem sobre ele.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p data-jarallax-element="0 -200">Referenciado de <a href="https://rockcontent.com/br/blog/web-4-0/" target="_blank">RockContent.com</a></p>
+    </footer>
+
+    <script src="jarallax.js"></script>
+    <script src="jarallax-element.js"></script>
+    <script type="text/javascript">
+        jarallax(document.querySelectorAll('.jarallax'), {
+        speed: 0.2
+    });
+    </script>
+</body>
+</html>
