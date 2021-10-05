@@ -1,5 +1,5 @@
 
-var tam = 2;
+var tam = 45;
 var idade = Array(tam);
 var sexo = Array(tam);
 var opiniao = Array(tam);
